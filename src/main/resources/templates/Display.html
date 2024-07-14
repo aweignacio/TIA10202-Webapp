@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>會員資料管理</title>
+    <style>
+        body {
+            background-color: #e0f7fa;
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        table {
+            width: 100%;
+            margin: 0 auto;
+            border-collapse: collapse;
+        }
+
+        th, td {
+            border: 1px solid #004d40;
+            padding: 10px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #004d40;
+            color: white;
+        }
+
+        tr:nth-child(even) {
+            background-color: #e0f7fa;
+        }
+
+        tr:nth-child(odd) {
+            background-color: #b2dfdb;
+        }
+
+        .actions {
+            display: flex;
+            gap: 10px;
+        }
+
+        .button {
+            background-color: #004d40;
+            color: white;
+            padding: 5px 10px;
+            text-decoration: none;
+            border-radius: 4px;
+            text-align: center;
+        }
+
+        .button:hover {
+            background-color: #003d33;
+        }
+
+        .add-button {
+            display: block;
+            width: 120px;
+            margin: 20px auto;
+            padding: 10px;
+            background-color: #004d40;
+            color: white;
+            text-align: center;
+            text-decoration: none;
+            border-radius: 4px;
+        }
+
+        .add-button:hover {
+            background-color: #003d33;
+        }
+
+        .name-column {
+            width: 120px;
+        }
+    </style>
+</head>
+<body>
+<h1>會員資料管理</h1>
+<a href="/addPage" class="add-button">新增員工</a>
+<table>
+    <thead>
+    <tr>
+        <th>會員等級</th>
+        <th>帳號</th>
+        <th>密碼</th>
+        <th class="name-column">姓名</th>
+        <th>生日</th>
+        <th>手機</th>
+        <th>Email</th>
+        <th>縣市</th>
+        <th>鄉鎮區</th>
+        <th>地址</th>
+        <th>累計消費金額</th>
+        <th>購物金</th>
+        <th>加入日期</th>
+        <th>最後更新日期</th>
+        <th>相關操作</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="member : ${members}">
+        <td th:text="${member.memberLvId}"></td>
+        <td th:text="${member.account}"></td>
+        <td th:text="${member.password}"></td>
+        <td th:text="${member.name}"></td>
+        <td th:text="${member.birthDt}"></td>
+        <td th:text="${member.phone}"></td>
+        <td th:text="${member.email}"></td>
+        <td th:text="${member.cntCode}"></td>
+        <td th:text="${member.distCode}"></td>
+        <td th:text="${member.address}"></td>
+        <td th:text="${member.accumulate}"></td>
+        <td th:text="${member.coinBalance}"></td>
+        <td th:text="${member.joinDate}"></td>
+        <td th:text="${member.lastUpdated}"></td>
+        <td class="actions">
+            <a th:href="@{/sendmemberId(memberId=${member.memberId})}" class="button">更新</a>
+            <a th:href="@{/del(memberId=${member.memberId})}" class="button">刪除</a>
+        </td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>

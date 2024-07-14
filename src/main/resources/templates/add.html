@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>新增員工</title>
+    <style>
+        body {
+            background-color: #e0f7fa;
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        form {
+            width: 50%;
+            margin: 0 auto;
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        input[type="text"] {
+            width: calc(100% - 22px);
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #004d40;
+            border-radius: 4px;
+        }
+
+        button {
+            background-color: #004d40;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            text-align: center;
+        }
+
+        button:hover {
+            background-color: #003d33;
+        }
+
+    </style>
+</head>
+<body>
+<h1>新增員工</h1>
+<form action="/add" method="post" th:object="${member}">
+    帳號：<input type="text" name="account" th:value="*{account}"><br>
+    密碼：<input type="text" name="password" th:value="*{password}"><br>
+    姓名：<input type="text" name="name" th:value="*{name}"><br>
+    生日：<input type="text" name="birthDt" th:value="*{birthDt}"><br>
+    手機：<input type="text" name="phone" th:value="*{phone}"><br>
+    E-mail：<input type="text" name="email" th:value="*{email}"><br>
+    縣市：<input type="text" name="cntCode" th:value="*{cntCode}"><br>
+    鄉鎮區：<input type="text" name="distCode" th:value="*{distCode}"><br>
+    地址：<input type="text" name="address" th:value="*{address}"><br>
+    建檔者：<input type="text" name="createdBy" th:value="*{createdBy}"><br>
+    最後更新者：<input type="text" name="lastUpdatedBy" th:value="*{lastUpdatedBy}"><br>
+    <button type="submit">確認</button>
+</form>
+</body>
+</html>
